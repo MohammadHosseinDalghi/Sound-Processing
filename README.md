@@ -2,19 +2,6 @@
 
 This project demonstrates real-time audio recording using PyAudio, performing Fast Fourier Transform (FFT) on the recorded audio data for frequency analysis, and saving the audio to a `.wav` file. The project also includes playback of the recorded audio through the computer's output device.
 
-## **Table of Contents**
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Code Breakdown](#code-breakdown)
-  - [1. Audio Recording](#1-audio-recording)
-  - [2. FFT Analysis](#2-fft-analysis)
-  - [3. Playback and Saving](#3-playback-and-saving)
-- [Requirements](#requirements)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## **Project Overview**
 This Python script captures audio from a microphone, processes it to extract key frequency components using FFT, and then saves the audio into a `.wav` file. Additionally, it enables playback of the captured audio. This project is built using the PyAudio and NumPy libraries for audio stream management and signal processing.
 
@@ -73,3 +60,20 @@ out_fft = np.fft.fft(data2)
 **3. Playback and Saving**
 
 Once the audio has been processed, it can be played back through your system’s output device and saved to a `.wav` file:
+```py
+sample_width = p.get_sample_size(pyaudio.paInt16)
+wf = wave.open("Sound.wav", 'wb')
+wf.setnchannels(1)
+wf.setsampwidth(sample_width)
+wf.setframerate(16000)
+wf.writeframes(b''.join(frames))
+wf .close()
+```
+* The recorded frames are combined and saved into the output file `Sound.wav`.
+
+## **Requirements**
+
+* Python 3.x
+* Numpy
+* PyAudio
+* Matplotlib
