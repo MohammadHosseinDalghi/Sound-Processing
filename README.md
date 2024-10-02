@@ -44,6 +44,8 @@ cd Sound-Processing
 The script uses PyAudio to capture audio data in real time:
 
 ```py
+p = pyaudio.PyAudio()
+chunk = 1024
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=chunk)
 ```
 * The audio is recorded in chunks of 1024 frames, with a sampling rate of 16kHz.
@@ -55,7 +57,7 @@ After capturing audio, the Fast Fourier Transform (FFT) is applied to convert th
 ```py
 out_fft = np.fft.fft(data2)
 ```
-* This provides a frequency spectrum that can be visualized or further analyzed.
+* This provides a frequency spectrum that can be visualized with matplotlib or further analyzed.
 
 **3. Playback and Saving**
 
@@ -77,3 +79,7 @@ wf .close()
 * Numpy
 * PyAudio
 * Matplotlib
+
+## **Contributing**
+
+If you'd like to contribute to this project, feel free to fork the repository and submit a pull request. Any improvements or new features are welcome!
